@@ -3,3 +3,4 @@ DATE,UBIT,DURATION,ACTIVITY_&_TOOL_DESCRIPTION
 2023/02/15,BJKENT4,30 minutes, edited csv.c using emacs to better understand main inputs
 2023/02/15,BJKENT4,20 minutes, edited csv.c using emacs to learn how to compare string values
 2023/02/15,BJKENT4,1 HOUR, edited csv.c using emacs to relearn how to read csv files
+2023/02/15,BJKENT4,5 minutes, edited csv.c using emacs to add atoi() and update include to use it

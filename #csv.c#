@@ -15,6 +15,7 @@ int mean(int col, char *file){
        //divisor++;
        //puts(buffer);
        while (rowValue != NULL){
+	 if 
 	 
        printf("%s\n", rowValue);
        rowValue = strtok(NULL, ",");
