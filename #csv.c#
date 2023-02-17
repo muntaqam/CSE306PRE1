@@ -17,11 +17,8 @@ void mean_field(int col, char *inFile){
     printf("Empty File.\n");
   }
   while (fgets(buffer, 1024, file)){
-    //char *rowValue = strtok(buffer, ","); //strtok split the input on the comma
     char *row = buffer;
     size_t i = 0;
-    //total += atoi(rowValue);
-    //divisor++;
     for (row = strtok(row, ","); row && i < index; row = strtok(NULL, ",")){
       i++;
       if (i == index && row){
