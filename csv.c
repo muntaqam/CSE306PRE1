@@ -11,26 +11,23 @@ void mean_field(int col, char *inFile){
   char buffer[1024]; //used to store data that fgets() reads
   double total = 0;
   double divisor = 0;
-  size_t index = col;
-
+  int column = 1;
+  
   if (!fgets(buffer, 1024, file)){
     printf("Empty File.\n");
   }
-  while (fgets(buffer, 1024, file)){
-    //char *rowValue = strtok(buffer, ","); //strtok split the input on the comma
+ 
+  while (fgets(buffer, 1024, file) != NULL){
     char *row = buffer;
-    size_t i = 0;
-    //total += atoi(rowValue);
-    //divisor++;
-    for (row = strtok(row, ","); row && i < index; row = strtok(NULL, ",")){
-      i++;
-      if (i == index && row){
-	puts(row);
-      }
-    }//end for		   
+    //puts(row);
+    row = strtok(buffer, ",");
+    if (column = col){
+      printf("%d\n", *row);
+    }
+    column++;	   
   }//end while 
   
-  //printf("%f\n", total/divisor);
+  printf("%f\n", total/divisor);
   fclose(file);
  }//end mean_field
 
