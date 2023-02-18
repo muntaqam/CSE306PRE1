@@ -186,7 +186,7 @@ int main(int argc, char *argv[]) {
             num_field = 0;
            
         } else if (strcmp(argv[i], "-r") == 0) {
-           
+            records_field = 0;
         }else if (strcmp(argv[i], "-max") == 0) {
            max_field = atoi(argv[i + 1]);
            maxfieldindex=atoi(argv[i + 1]);
@@ -224,7 +224,7 @@ int main(int argc, char *argv[]) {
         display_field_counts(csv_file);
     }
     if (records_field != -1) {
-        display_field_counts(csv_file);
+        display_record_count(csv_file, ignore_header);
     }  
     if (min_field != -1) {
         // Implement minimum field functionality
