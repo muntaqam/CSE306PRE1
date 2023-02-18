@@ -13,7 +13,7 @@ void mean_field(int col, char *inFile){
   FILE *file = fopen(inFile, "r");
   if (inFile == NULL) {
     printf("Error opening file %s\n", inFile);
-    return;
+    exit(EXIT_FAILURE);
   }
   char buffer[1024]; //used to store data that fgets() reads
   double total = 0;
@@ -21,17 +21,18 @@ void mean_field(int col, char *inFile){
   
   if (!fgets(buffer, 1024, file)){
     printf("Empty File.\n");
+    exit(EXIT_FAILURE);
   }
 
   while (fgets(buffer, sizeof buffer, file) != NULL){
     char *row = buffer;
-    row = strtok(buffer, "\",");
+    row = strtok(buffer, "\"");
     while (row != NULL){      
       //puts(row);
       //printf("%d\n", row[0]);
       total += atof(row);
       divisor++;
-      row = strtok(NULL, "\",");
+      row = strtok(NULL, "\"");
      }	   
   }//end while 
   
