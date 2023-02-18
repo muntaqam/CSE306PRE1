@@ -113,7 +113,7 @@ void csv_min(FILE* fp,int min_field){
 //of the data records the program exits with error code EXIT_FAILURE.
 //See how fields are identified when the -h option is used.
 
-void mean_field(int col, char *inFile){
+void mean(int col, char *inFile){
   FILE *file = fopen(inFile, "r");
   if (inFile == NULL) {
     printf("Error opening file %s\n", inFile);
@@ -148,7 +148,7 @@ void mean_field(int col, char *inFile){
 //Value is formatted according to the same rules as data in fields.
 //See how fields are identified when the -h option is used.
  
-void records_field(int field, double value, char *inFile){
+void records(int field, double value, char *inFile){
   FILE *file = fopen(inFile, "r");
   if (inFile == NULL) {
     printf("Error opening file %s\n", inFile);
@@ -237,12 +237,12 @@ int main(int argc, char *argv[]) {
     }
     if (mean_field != -1) {
         // Implement mean field functionality
-        // ...
+      mean(mean_field, csv_file);
     }
     
     if (records_field != -1) {
         // Implement records field functionality
-        // ...
+      records(records_field, records_value, csv_file);
     }
     
 }
