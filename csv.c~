@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+  // FILE* inputFile = fopen("file_path", "r");
+  //int row = 0;
+  //int column = 0;
+  //char buffer[1024]; //used to store data that fgets() reads
+  printf("test");
+
+  /*
+  //reading from file with fscanf() or fgets()
+  //don't forget to close file with fclose(newFile)
+  int mean(int n){
+    FILE* inputFile = fopen("file_path", "r");
+    int row = 0;
+    int column = 0;
+    char buffer[1024]; //used to store data that fgets() reads
+    
+     while (fgets(buffer, 1024, inputFile)){
+       //row++;
+       //char* rowValue = strtok(buffer, ","); //strtok splite the input on the comma
+       //printf("%s\n", buffer);
+       puts(buffer);
+     }
+     fclose(inputFile);
+     return 0;
+ }//end mean
+  */
+  return 0;
+}//end main
+
