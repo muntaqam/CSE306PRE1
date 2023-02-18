@@ -25,19 +25,13 @@ void mean_field(int col, char *inFile){
 
   while (fgets(buffer, sizeof buffer, file) != NULL){
     char *row = buffer;
-    row = strtok(buffer, "\"");
+    row = strtok(buffer, "\",");
     while (row != NULL){      
-      /*
-	if (row[0] == 34){ //34 is " in ASCII
-	puts(row);
-	}
-      */
-      
-      puts(row);
+      //puts(row);
       //printf("%d\n", row[0]);
       total += atof(row);
       divisor++;
-      row = strtok(NULL, "\"");
+      row = strtok(NULL, "\",");
      }	   
   }//end while 
   
