@@ -113,12 +113,8 @@ void csv_min(FILE* fp,int min_field){
 //of the data records the program exits with error code EXIT_FAILURE.
 //See how fields are identified when the -h option is used.
 
-void mean(int col, char *inFile){
-  FILE *file = fopen(inFile, "r");
-  if (inFile == NULL) {
-    printf("Error opening file %s\n", inFile);
-    exit(EXIT_FAILURE);
-  }
+void mean(int col, FILE* file){
+
   char buffer[1024]; //used to store data that fgets() reads
   double total = 0;
   double divisor = 0;
@@ -148,14 +144,37 @@ void mean(int col, char *inFile){
 //Value is formatted according to the same rules as data in fields.
 //See how fields are identified when the -h option is used.
  
-void records(int field, double value, char *inFile){
-  FILE *file = fopen(inFile, "r");
-  if (inFile == NULL) {
-    printf("Error opening file %s\n", inFile);
-    return;
-  }
-  printf("test\n");
-  fclose(file);
+void records(int field_num, const char *value, FILE* file, int has_header){
+  
+
+    char line[MAX_LINE_LENGTH];
+    char *token;
+    int line_num = 0;
+    
+    while (fgets(line, MAX_LINE_LENGTH, file)) {
+        line_num++;
+        
+        if (has_header && line_num == 1) {
+            // Skip the first line if it contains headers
+            continue;
+        }
+        
+       
+        token = strtok(line, ",");
+        int token_num = 0;
+        while (token != NULL) {
+            if (token_num == field_num) {
+                if (strcmp(token, value) == 0) {
+                    printf("%s", line);
+                    break;
+                }
+            }
+            token = strtok(NULL, ",");
+            token_num++;
+        }
+    }
+    
+    fclose(file);
 }//end records_field
 
 
@@ -172,6 +191,7 @@ int main(int argc, char *argv[]) {
     int records_value = -1;
     int minfieldindex=0;
     int maxfieldindex=0;
+    const char *value;
     
     if (argc < 2) {
         display_usage();
@@ -202,7 +222,7 @@ int main(int argc, char *argv[]) {
             i++;
         } else if (strcmp(argv[i], "-records") == 0) {
             records_field = atoi(argv[i + 1]) - 1;
-            records_value = atoi(argv[i + 2]);
+            value = (argv[i + 2]);
             i += 2;
         } else {
             printf("going here in dispkay usage: %d\n",max_field);
@@ -215,6 +235,7 @@ int main(int argc, char *argv[]) {
     csv_file = fopen(argv[argc - 1], "r");
     if (csv_file == NULL) {
         printf("Error: Could not open file\n");
+        
         return 1;
     }
     
@@ -242,7 +263,7 @@ int main(int argc, char *argv[]) {
     
     if (records_field != -1) {
         // Implement records field functionality
-      records(records_field, records_value, csv_file);
+      records(records_field,value,csv_file,ignore_header);
     }
     
 }
