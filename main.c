@@ -64,7 +64,7 @@ void csv_max(FILE* fp,int max_field){
     while (fgets(line, MAX_LINE_LENGTH, fp) != NULL) {
         char* token = strtok(line, ",");
         double num = atof(token);
-        
+         
         if (first_field || num > max) {
             max = num;
             first_field = 0;
